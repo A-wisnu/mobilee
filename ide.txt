@@ -1,0 +1,1 @@
+buatkan aku sebuah alat dari golang untuk membuat emulator android bisa berjalan dan dapat di tampilkan via website dengan begitu bisa di hosting ke vercel agar bisa di gunakan

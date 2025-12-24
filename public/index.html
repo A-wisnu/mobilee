@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Emulator Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">📱</span>
+                <h1>Android Emulator <span class="accent">Web</span></h1>
+            </div>
+            <p>Jalankan Android di browser - tanpa ADB, tanpa login akun</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Control Section -->
+            <section class="section-card">
+                <h2><span class="icon">⚙️</span> Kontrol Emulator</h2>
+
+                <div class="emulator-info">
+                    <div class="info-badge">
+                        <span class="badge-icon">🤖</span>
+                        <div>
+                            <strong>Android 11 (Docker)</strong>
+                            <p>Emulator ringan via Docker + noVNC</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status-bar" id="statusBar">
+                    <div class="status-indicator" id="statusIndicator">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Checking...</span>
+                    </div>
+                </div>
+
+                <div class="control-buttons">
+                    <button id="startBtn" class="btn btn-primary btn-large" onclick="startEmulator()">
+                        🚀 Mulai Emulator
+                    </button>
+                    <button id="stopBtn" class="btn btn-secondary" onclick="stopEmulator()" style="display: none;">
+                        ⏹️ Stop
+                    </button>
+                </div>
+
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p class="progress-text" id="progressText">Memulai emulator...</p>
+                </div>
+
+                <div class="info-box" id="dockerInfo" style="display: none;">
+                    <p>⚠️ Docker tidak ditemukan.
+                        <a href="https://www.docker.com/products/docker-desktop" target="_blank">
+                            Download Docker Desktop
+                        </a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Emulator Display -->
+            <section class="section-card" id="emulatorSection">
+                <h2><span class="icon">📱</span> Tampilan Emulator</h2>
+
+                <div class="emulator-display">
+                    <div id="vncContainer" class="vnc-container">
+                        <div class="placeholder" id="placeholder">
+                            <span class="placeholder-icon">📱</span>
+                            <p>Klik "Mulai Emulator" untuk memulai</p>
+                            <small>Membutuhkan Docker Desktop</small>
+                        </div>
+                        <iframe id="vncFrame" class="vnc-frame" style="display: none;"></iframe>
+                    </div>
+                </div>
+
+                <div class="emulator-actions" id="emulatorActions" style="display: none;">
+                    <button class="btn btn-secondary" onclick="openFullscreen()">
+                        🔲 Fullscreen
+                    </button>
+                    <button class="btn btn-secondary" onclick="refreshVNC()">
+                        🔄 Refresh
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Android Emulator Web • Docker + noVNC</p>
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

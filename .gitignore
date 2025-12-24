@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+token.txt
+*.key
+*.pem
+
+# Build
+dist/
+build/
