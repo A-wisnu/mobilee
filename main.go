@@ -6,15 +6,11 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"os/exec"
 	"sync"
 
 	"github.com/gorilla/websocket"
-)
-
-// Config
-const (
-	DefaultPort = "8080"
 )
 
 // WebSocket upgrader
@@ -61,11 +57,13 @@ func main() {
 	// Proxy VNC
 	http.HandleFunc("/vnc/", handleVNCProxy)
 
-	port := DefaultPort
-	fmt.Printf("🚀 Android Emulator Web Server\n")
-	fmt.Printf("   URL: http://localhost:%s\n", port)
-	fmt.Println("   Tidak memerlukan ADB - menggunakan Docker + noVNC")
-	fmt.Println("")
+	// Get port from environment variable (Railway, Render, etc.)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	fmt.Printf("Server starting on port %s\n", port)
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
